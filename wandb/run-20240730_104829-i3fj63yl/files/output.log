@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "C:\Jinyoon_Projects\1_ISIC_2024_competition\train_yolo.py", line 6, in <module>
+    model.train(data="./datasets", epochs=100, imgsz=128)
+  File "C:\Jinyoon_Projects\1_ISIC_2024_competition\ultralytics\engine\model.py", line 811, in train
+    self.trainer.train()
+  File "C:\Jinyoon_Projects\1_ISIC_2024_competition\ultralytics\engine\trainer.py", line 205, in train
+    self._do_train(world_size)
+  File "C:\Jinyoon_Projects\1_ISIC_2024_competition\ultralytics\engine\trainer.py", line 324, in _do_train
+    self._setup_train(world_size)
+  File "C:\Jinyoon_Projects\1_ISIC_2024_competition\ultralytics\engine\trainer.py", line 233, in _setup_train
+    ckpt = self.setup_model()
+  File "C:\Jinyoon_Projects\1_ISIC_2024_competition\ultralytics\models\yolo\classify\train.py", line 63, in setup_model
+    if str(self.model) in torchvision.models.__dict__d:
+AttributeError: module 'torchvision.models' has no attribute '_ClassificationTrainer__dict__d'

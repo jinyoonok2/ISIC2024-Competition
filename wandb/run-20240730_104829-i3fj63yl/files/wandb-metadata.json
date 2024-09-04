@@ -1,0 +1,53 @@
+{
+    "os": "Windows-10-10.0.22631-SP0",
+    "python": "3.10.14",
+    "heartbeatAt": "2024-07-30T01:48:30.511822",
+    "startedAt": "2024-07-30T01:48:29.673433",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "C:\\Jinyoon_Projects\\1_ISIC_2024_competition\\train_yolo.py",
+    "codePathLocal": "train_yolo.py",
+    "codePath": "train_yolo.py",
+    "git": {
+        "remote": "https://github.com/jinyoonok2/1_ISIC_2024_competition.git",
+        "commit": "abd8189402fce72ed464147a08a6ac777f5d96c9"
+    },
+    "email": "84653106+jinyoonok2@users.noreply.github.com",
+    "root": "C:/Jinyoon_Projects/1_ISIC_2024_competition",
+    "host": "jinyoon_laptop",
+    "username": "jinyo",
+    "executable": "C:\\Users\\jinyo\\miniconda3\\envs\\isic2024\\python.exe",
+    "cpu_count": 8,
+    "cpu_count_logical": 16,
+    "cpu_freq": {
+        "current": 2652.0,
+        "min": 0.0,
+        "max": 3301.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2652.0,
+            "min": 0.0,
+            "max": 3301.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 476.147647857666,
+            "used": 337.42073822021484
+        }
+    },
+    "gpu": "NVIDIA GeForce RTX 3070 Laptop GPU",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 3070 Laptop GPU",
+            "memory_total": 8589934592
+        }
+    ],
+    "memory": {
+        "total": 15.420978546142578
+    }
+}

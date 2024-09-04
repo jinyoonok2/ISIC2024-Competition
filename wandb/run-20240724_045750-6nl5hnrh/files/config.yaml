@@ -1,0 +1,63 @@
+wandb_version: 1
+
+model_name:
+  desc: null
+  value: efficientnet_b0
+pretrained:
+  desc: null
+  value: true
+num_epochs:
+  desc: null
+  value: 3
+learning_rate:
+  desc: null
+  value: 0.0001
+batch_size:
+  desc: null
+  value: 32
+seed:
+  desc: null
+  value: 42
+project_name:
+  desc: null
+  value: ISIC_2024_Competition
+artifact_name:
+  desc: null
+  value: isic2024-base-model
+wandb_log:
+  desc: null
+  value: true
+dataset_mode:
+  desc: null
+  value: combined
+_wandb:
+  desc: null
+  value:
+    python_version: 3.10.13
+    cli_version: 0.17.5
+    framework: torch
+    is_jupyter_run: true
+    is_kaggle_kernel: false
+    start_time: 1721797073
+    t:
+      1:
+      - 1
+      - 41
+      - 49
+      - 55
+      - 63
+      2:
+      - 1
+      - 41
+      - 49
+      - 55
+      - 63
+      3:
+      - 16
+      - 23
+      4: 3.10.13
+      5: 0.17.5
+      8:
+      - 1
+      - 5
+      13: linux-x86_64

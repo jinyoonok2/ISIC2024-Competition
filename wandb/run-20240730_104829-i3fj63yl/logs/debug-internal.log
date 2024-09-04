@@ -1,0 +1,201 @@
+2024-07-30 10:48:29,681 INFO    StreamThr :24120 [internal.py:wandb_internal():85] W&B internal server running at pid: 24120, started at: 2024-07-30 10:48:29.680601
+2024-07-30 10:48:29,682 DEBUG   HandlerThread:24120 [handler.py:handle_request():158] handle_request: status
+2024-07-30 10:48:29,688 INFO    WriterThread:24120 [datastore.py:open_for_write():87] open: C:\Jinyoon_Projects\1_ISIC_2024_competition\wandb\run-20240730_104829-i3fj63yl\run-i3fj63yl.wandb
+2024-07-30 10:48:29,689 DEBUG   SenderThread:24120 [sender.py:send():379] send: header
+2024-07-30 10:48:29,763 DEBUG   SenderThread:24120 [sender.py:send():379] send: run
+2024-07-30 10:48:30,327 INFO    SenderThread:24120 [dir_watcher.py:__init__():211] watching files in: C:\Jinyoon_Projects\1_ISIC_2024_competition\wandb\run-20240730_104829-i3fj63yl\files
+2024-07-30 10:48:30,327 INFO    SenderThread:24120 [sender.py:_start_run_threads():1188] run started: i3fj63yl with start time 1722304109.682888
+2024-07-30 10:48:30,340 DEBUG   HandlerThread:24120 [handler.py:handle_request():158] handle_request: check_version
+2024-07-30 10:48:30,340 DEBUG   SenderThread:24120 [sender.py:send_request():406] send_request: check_version
+2024-07-30 10:48:30,403 DEBUG   HandlerThread:24120 [handler.py:handle_request():158] handle_request: run_start
+2024-07-30 10:48:30,463 DEBUG   HandlerThread:24120 [system_info.py:__init__():26] System info init
+2024-07-30 10:48:30,463 DEBUG   HandlerThread:24120 [system_info.py:__init__():41] System info init done
+2024-07-30 10:48:30,463 INFO    HandlerThread:24120 [system_monitor.py:start():194] Starting system monitor
+2024-07-30 10:48:30,463 INFO    SystemMonitor:24120 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-07-30 10:48:30,463 INFO    HandlerThread:24120 [system_monitor.py:probe():214] Collecting system info
+2024-07-30 10:48:30,467 INFO    SystemMonitor:24120 [interfaces.py:start():188] Started cpu monitoring
+2024-07-30 10:48:30,467 INFO    SystemMonitor:24120 [interfaces.py:start():188] Started disk monitoring
+2024-07-30 10:48:30,468 INFO    SystemMonitor:24120 [interfaces.py:start():188] Started gpu monitoring
+2024-07-30 10:48:30,474 INFO    SystemMonitor:24120 [interfaces.py:start():188] Started memory monitoring
+2024-07-30 10:48:30,507 INFO    SystemMonitor:24120 [interfaces.py:start():188] Started network monitoring
+2024-07-30 10:48:30,511 DEBUG   HandlerThread:24120 [system_info.py:probe():152] Probing system
+2024-07-30 10:48:30,512 DEBUG   HandlerThread:24120 [system_info.py:_probe_git():137] Probing git
+2024-07-30 10:48:30,632 DEBUG   HandlerThread:24120 [system_info.py:_probe_git():145] Probing git done
+2024-07-30 10:48:30,632 DEBUG   HandlerThread:24120 [system_info.py:probe():200] Probing system done
+2024-07-30 10:48:30,632 DEBUG   HandlerThread:24120 [system_monitor.py:probe():223] {'os': 'Windows-10-10.0.22631-SP0', 'python': '3.10.14', 'heartbeatAt': '2024-07-30T01:48:30.511822', 'startedAt': '2024-07-30T01:48:29.673433', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': 'C:\\Jinyoon_Projects\\1_ISIC_2024_competition\\train_yolo.py', 'codePathLocal': 'train_yolo.py', 'codePath': 'train_yolo.py', 'git': {'remote': 'https://github.com/jinyoonok2/1_ISIC_2024_competition.git', 'commit': 'abd8189402fce72ed464147a08a6ac777f5d96c9'}, 'email': '84653106+jinyoonok2@users.noreply.github.com', 'root': 'C:/Jinyoon_Projects/1_ISIC_2024_competition', 'host': 'jinyoon_laptop', 'username': 'jinyo', 'executable': 'C:\\Users\\jinyo\\miniconda3\\envs\\isic2024\\python.exe', 'cpu_count': 8, 'cpu_count_logical': 16, 'cpu_freq': {'current': 2652.0, 'min': 0.0, 'max': 3301.0}, 'cpu_freq_per_core': [{'current': 2652.0, 'min': 0.0, 'max': 3301.0}], 'disk': {'/': {'total': 476.147647857666, 'used': 337.42073822021484}}, 'gpu': 'NVIDIA GeForce RTX 3070 Laptop GPU', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA GeForce RTX 3070 Laptop GPU', 'memory_total': 8589934592}], 'memory': {'total': 15.420978546142578}}
+2024-07-30 10:48:30,632 INFO    HandlerThread:24120 [system_monitor.py:probe():224] Finished collecting system info
+2024-07-30 10:48:30,632 INFO    HandlerThread:24120 [system_monitor.py:probe():227] Publishing system info
+2024-07-30 10:48:30,633 DEBUG   HandlerThread:24120 [system_info.py:_save_conda():209] Saving list of conda packages installed into the current environment
+2024-07-30 10:48:30,637 ERROR   HandlerThread:24120 [system_info.py:_save_conda():223] Error saving conda packages: [WinError 2] The system cannot find the file specified
+Traceback (most recent call last):
+  File "C:\Users\jinyo\miniconda3\envs\isic2024\lib\site-packages\wandb\sdk\internal\system\system_info.py", line 216, in _save_conda
+    subprocess.call(
+  File "C:\Users\jinyo\miniconda3\envs\isic2024\lib\subprocess.py", line 345, in call
+    with Popen(*popenargs, **kwargs) as p:
+  File "C:\Users\jinyo\miniconda3\envs\isic2024\lib\subprocess.py", line 971, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\jinyo\miniconda3\envs\isic2024\lib\subprocess.py", line 1456, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+2024-07-30 10:48:30,639 DEBUG   HandlerThread:24120 [system_info.py:_save_conda():224] Saving conda packages done
+2024-07-30 10:48:30,640 INFO    HandlerThread:24120 [system_monitor.py:probe():229] Finished publishing system info
+2024-07-30 10:48:30,646 DEBUG   SenderThread:24120 [sender.py:send():379] send: files
+2024-07-30 10:48:30,646 INFO    SenderThread:24120 [sender.py:_save_file():1454] saving file wandb-metadata.json with policy now
+2024-07-30 10:48:30,822 DEBUG   HandlerThread:24120 [handler.py:handle_request():158] handle_request: python_packages
+2024-07-30 10:48:30,823 DEBUG   SenderThread:24120 [sender.py:send_request():406] send_request: python_packages
+2024-07-30 10:48:30,823 DEBUG   HandlerThread:24120 [handler.py:handle_request():158] handle_request: stop_status
+2024-07-30 10:48:30,824 DEBUG   SenderThread:24120 [sender.py:send_request():406] send_request: stop_status
+2024-07-30 10:48:30,824 DEBUG   HandlerThread:24120 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-30 10:48:31,080 DEBUG   SenderThread:24120 [sender.py:send():379] send: telemetry
+2024-07-30 10:48:31,082 DEBUG   SenderThread:24120 [sender.py:send():379] send: exit
+2024-07-30 10:48:31,082 INFO    SenderThread:24120 [sender.py:send_exit():586] handling exit code: 1
+2024-07-30 10:48:31,082 INFO    SenderThread:24120 [sender.py:send_exit():588] handling runtime: 0
+2024-07-30 10:48:31,083 INFO    SenderThread:24120 [sender.py:_save_file():1454] saving file wandb-summary.json with policy end
+2024-07-30 10:48:31,084 INFO    SenderThread:24120 [sender.py:send_exit():594] send defer
+2024-07-30 10:48:31,084 DEBUG   HandlerThread:24120 [handler.py:handle_request():158] handle_request: defer
+2024-07-30 10:48:31,084 INFO    HandlerThread:24120 [handler.py:handle_request_defer():184] handle defer: 0
+2024-07-30 10:48:31,084 DEBUG   SenderThread:24120 [sender.py:send_request():406] send_request: defer
+2024-07-30 10:48:31,084 INFO    SenderThread:24120 [sender.py:send_request_defer():610] handle sender defer: 0
+2024-07-30 10:48:31,084 INFO    SenderThread:24120 [sender.py:transition_state():614] send defer: 1
+2024-07-30 10:48:31,085 DEBUG   HandlerThread:24120 [handler.py:handle_request():158] handle_request: defer
+2024-07-30 10:48:31,085 INFO    HandlerThread:24120 [handler.py:handle_request_defer():184] handle defer: 1
+2024-07-30 10:48:31,085 DEBUG   SenderThread:24120 [sender.py:send_request():406] send_request: defer
+2024-07-30 10:48:31,085 INFO    SenderThread:24120 [sender.py:send_request_defer():610] handle sender defer: 1
+2024-07-30 10:48:31,085 INFO    SenderThread:24120 [sender.py:transition_state():614] send defer: 2
+2024-07-30 10:48:31,085 DEBUG   HandlerThread:24120 [handler.py:handle_request():158] handle_request: defer
+2024-07-30 10:48:31,085 INFO    HandlerThread:24120 [handler.py:handle_request_defer():184] handle defer: 2
+2024-07-30 10:48:31,085 INFO    HandlerThread:24120 [system_monitor.py:finish():203] Stopping system monitor
+2024-07-30 10:48:31,086 DEBUG   SystemMonitor:24120 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-07-30 10:48:31,095 INFO    HandlerThread:24120 [interfaces.py:finish():200] Joined cpu monitor
+2024-07-30 10:48:31,095 DEBUG   SystemMonitor:24120 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-07-30 10:48:31,095 INFO    HandlerThread:24120 [interfaces.py:finish():200] Joined disk monitor
+2024-07-30 10:48:31,095 DEBUG   SystemMonitor:24120 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-07-30 10:48:31,147 INFO    HandlerThread:24120 [interfaces.py:finish():200] Joined gpu monitor
+2024-07-30 10:48:31,148 INFO    HandlerThread:24120 [interfaces.py:finish():200] Joined memory monitor
+2024-07-30 10:48:31,148 INFO    HandlerThread:24120 [interfaces.py:finish():200] Joined network monitor
+2024-07-30 10:48:31,148 DEBUG   SenderThread:24120 [sender.py:send_request():406] send_request: defer
+2024-07-30 10:48:31,148 INFO    SenderThread:24120 [sender.py:send_request_defer():610] handle sender defer: 2
+2024-07-30 10:48:31,148 INFO    SenderThread:24120 [sender.py:transition_state():614] send defer: 3
+2024-07-30 10:48:31,148 DEBUG   SenderThread:24120 [sender.py:send():379] send: stats
+2024-07-30 10:48:31,148 DEBUG   HandlerThread:24120 [handler.py:handle_request():158] handle_request: defer
+2024-07-30 10:48:31,149 INFO    HandlerThread:24120 [handler.py:handle_request_defer():184] handle defer: 3
+2024-07-30 10:48:31,149 DEBUG   SenderThread:24120 [sender.py:send_request():406] send_request: defer
+2024-07-30 10:48:31,149 INFO    SenderThread:24120 [sender.py:send_request_defer():610] handle sender defer: 3
+2024-07-30 10:48:31,149 INFO    SenderThread:24120 [sender.py:transition_state():614] send defer: 4
+2024-07-30 10:48:31,149 DEBUG   HandlerThread:24120 [handler.py:handle_request():158] handle_request: defer
+2024-07-30 10:48:31,149 INFO    HandlerThread:24120 [handler.py:handle_request_defer():184] handle defer: 4
+2024-07-30 10:48:31,149 DEBUG   SenderThread:24120 [sender.py:send_request():406] send_request: defer
+2024-07-30 10:48:31,150 INFO    SenderThread:24120 [sender.py:send_request_defer():610] handle sender defer: 4
+2024-07-30 10:48:31,150 INFO    SenderThread:24120 [sender.py:transition_state():614] send defer: 5
+2024-07-30 10:48:31,150 DEBUG   HandlerThread:24120 [handler.py:handle_request():158] handle_request: defer
+2024-07-30 10:48:31,150 INFO    HandlerThread:24120 [handler.py:handle_request_defer():184] handle defer: 5
+2024-07-30 10:48:31,150 DEBUG   SenderThread:24120 [sender.py:send():379] send: summary
+2024-07-30 10:48:31,152 INFO    SenderThread:24120 [sender.py:_save_file():1454] saving file wandb-summary.json with policy end
+2024-07-30 10:48:31,152 DEBUG   SenderThread:24120 [sender.py:send_request():406] send_request: defer
+2024-07-30 10:48:31,152 INFO    SenderThread:24120 [sender.py:send_request_defer():610] handle sender defer: 5
+2024-07-30 10:48:31,152 INFO    SenderThread:24120 [sender.py:transition_state():614] send defer: 6
+2024-07-30 10:48:31,152 DEBUG   HandlerThread:24120 [handler.py:handle_request():158] handle_request: defer
+2024-07-30 10:48:31,152 INFO    HandlerThread:24120 [handler.py:handle_request_defer():184] handle defer: 6
+2024-07-30 10:48:31,153 DEBUG   SenderThread:24120 [sender.py:send_request():406] send_request: defer
+2024-07-30 10:48:31,153 INFO    SenderThread:24120 [sender.py:send_request_defer():610] handle sender defer: 6
+2024-07-30 10:48:31,156 DEBUG   HandlerThread:24120 [handler.py:handle_request():158] handle_request: status_report
+2024-07-30 10:48:31,345 INFO    Thread-16 :24120 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Jinyoon_Projects\1_ISIC_2024_competition\wandb\run-20240730_104829-i3fj63yl\files\wandb-summary.json
+2024-07-30 10:48:31,345 INFO    Thread-16 :24120 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Jinyoon_Projects\1_ISIC_2024_competition\wandb\run-20240730_104829-i3fj63yl\files\conda-environment.yaml
+2024-07-30 10:48:31,346 INFO    Thread-16 :24120 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Jinyoon_Projects\1_ISIC_2024_competition\wandb\run-20240730_104829-i3fj63yl\files\wandb-metadata.json
+2024-07-30 10:48:31,346 INFO    Thread-16 :24120 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Jinyoon_Projects\1_ISIC_2024_competition\wandb\run-20240730_104829-i3fj63yl\files\requirements.txt
+2024-07-30 10:48:31,346 INFO    Thread-16 :24120 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Jinyoon_Projects\1_ISIC_2024_competition\wandb\run-20240730_104829-i3fj63yl\files\output.log
+2024-07-30 10:48:31,399 INFO    wandb-upload_0:24120 [upload_job.py:push():130] Uploaded file C:\Users\jinyo\AppData\Local\Temp\tmp88xi14m2wandb\0tc11xjx-wandb-metadata.json
+2024-07-30 10:48:31,839 DEBUG   HandlerThread:24120 [handler.py:handle_request():158] handle_request: poll_exit
+2024-07-30 10:48:32,207 INFO    SenderThread:24120 [sender.py:transition_state():614] send defer: 7
+2024-07-30 10:48:32,208 DEBUG   SenderThread:24120 [sender.py:send_request():406] send_request: poll_exit
+2024-07-30 10:48:32,208 DEBUG   HandlerThread:24120 [handler.py:handle_request():158] handle_request: defer
+2024-07-30 10:48:32,208 INFO    HandlerThread:24120 [handler.py:handle_request_defer():184] handle defer: 7
+2024-07-30 10:48:32,208 DEBUG   SenderThread:24120 [sender.py:send_request():406] send_request: defer
+2024-07-30 10:48:32,208 INFO    SenderThread:24120 [sender.py:send_request_defer():610] handle sender defer: 7
+2024-07-30 10:48:32,354 INFO    Thread-16 :24120 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Jinyoon_Projects\1_ISIC_2024_competition\wandb\run-20240730_104829-i3fj63yl\files\config.yaml
+2024-07-30 10:48:32,851 DEBUG   HandlerThread:24120 [handler.py:handle_request():158] handle_request: poll_exit
+2024-07-30 10:48:33,087 INFO    SenderThread:24120 [sender.py:transition_state():614] send defer: 8
+2024-07-30 10:48:33,087 DEBUG   SenderThread:24120 [sender.py:send_request():406] send_request: poll_exit
+2024-07-30 10:48:33,087 DEBUG   HandlerThread:24120 [handler.py:handle_request():158] handle_request: defer
+2024-07-30 10:48:33,088 INFO    HandlerThread:24120 [handler.py:handle_request_defer():184] handle defer: 8
+2024-07-30 10:48:33,088 DEBUG   SenderThread:24120 [sender.py:send_request():406] send_request: defer
+2024-07-30 10:48:33,088 INFO    SenderThread:24120 [sender.py:send_request_defer():610] handle sender defer: 8
+2024-07-30 10:48:33,088 INFO    SenderThread:24120 [job_builder.py:build():440] Attempting to build job artifact
+2024-07-30 10:48:33,089 INFO    SenderThread:24120 [job_builder.py:_get_source_type():569] is repo sourced job
+2024-07-30 10:48:33,368 INFO    Thread-16 :24120 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Jinyoon_Projects\1_ISIC_2024_competition\wandb\run-20240730_104829-i3fj63yl\files\output.log
+2024-07-30 10:48:33,485 INFO    SenderThread:24120 [job_builder.py:build():545] adding wandb-job metadata file
+2024-07-30 10:48:33,500 INFO    SenderThread:24120 [sender.py:transition_state():614] send defer: 9
+2024-07-30 10:48:33,500 DEBUG   SenderThread:24120 [sender.py:send():379] send: artifact
+2024-07-30 10:48:33,501 DEBUG   HandlerThread:24120 [handler.py:handle_request():158] handle_request: defer
+2024-07-30 10:48:33,502 INFO    HandlerThread:24120 [handler.py:handle_request_defer():184] handle defer: 9
+2024-07-30 10:48:33,865 DEBUG   HandlerThread:24120 [handler.py:handle_request():158] handle_request: poll_exit
+2024-07-30 10:48:35,035 INFO    wandb-upload_1:24120 [upload_job.py:push():88] Uploaded file C:\Users\jinyo\AppData\Local\Temp\tmpow_bcws_\wandb-job.json
+2024-07-30 10:48:35,037 INFO    wandb-upload_0:24120 [upload_job.py:push():88] Uploaded file C:\Users\jinyo\AppData\Local\wandb\wandb\artifacts\staging\tmpt74f5lde
+2024-07-30 10:48:36,339 INFO    SenderThread:24120 [sender.py:send_artifact():1537] sent artifact job-https___github.com_jinyoonok2_1_ISIC_2024_competition.git_train_yolo.py - {'id': 'QXJ0aWZhY3Q6MTA2MjY5NzQ1OA==', 'state': 'PENDING', 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjM0MzI3MjQ0NQ==', 'latestArtifact': None}}
+2024-07-30 10:48:36,339 DEBUG   SenderThread:24120 [sender.py:send_request():406] send_request: defer
+2024-07-30 10:48:36,339 DEBUG   HandlerThread:24120 [handler.py:handle_request():158] handle_request: status_report
+2024-07-30 10:48:36,339 INFO    SenderThread:24120 [sender.py:send_request_defer():610] handle sender defer: 9
+2024-07-30 10:48:36,340 INFO    SenderThread:24120 [dir_watcher.py:finish():358] shutting down directory watcher
+2024-07-30 10:48:36,393 INFO    SenderThread:24120 [dir_watcher.py:finish():388] scan: C:\Jinyoon_Projects\1_ISIC_2024_competition\wandb\run-20240730_104829-i3fj63yl\files
+2024-07-30 10:48:36,394 INFO    SenderThread:24120 [dir_watcher.py:finish():402] scan save: C:\Jinyoon_Projects\1_ISIC_2024_competition\wandb\run-20240730_104829-i3fj63yl\files\conda-environment.yaml conda-environment.yaml
+2024-07-30 10:48:36,394 INFO    SenderThread:24120 [dir_watcher.py:finish():402] scan save: C:\Jinyoon_Projects\1_ISIC_2024_competition\wandb\run-20240730_104829-i3fj63yl\files\config.yaml config.yaml
+2024-07-30 10:48:36,394 INFO    SenderThread:24120 [dir_watcher.py:finish():402] scan save: C:\Jinyoon_Projects\1_ISIC_2024_competition\wandb\run-20240730_104829-i3fj63yl\files\output.log output.log
+2024-07-30 10:48:36,396 INFO    SenderThread:24120 [dir_watcher.py:finish():402] scan save: C:\Jinyoon_Projects\1_ISIC_2024_competition\wandb\run-20240730_104829-i3fj63yl\files\requirements.txt requirements.txt
+2024-07-30 10:48:36,399 INFO    SenderThread:24120 [dir_watcher.py:finish():402] scan save: C:\Jinyoon_Projects\1_ISIC_2024_competition\wandb\run-20240730_104829-i3fj63yl\files\wandb-metadata.json wandb-metadata.json
+2024-07-30 10:48:36,399 INFO    SenderThread:24120 [dir_watcher.py:finish():402] scan save: C:\Jinyoon_Projects\1_ISIC_2024_competition\wandb\run-20240730_104829-i3fj63yl\files\wandb-summary.json wandb-summary.json
+2024-07-30 10:48:36,402 INFO    SenderThread:24120 [sender.py:transition_state():614] send defer: 10
+2024-07-30 10:48:36,402 DEBUG   SenderThread:24120 [sender.py:send_request():406] send_request: poll_exit
+2024-07-30 10:48:36,402 DEBUG   HandlerThread:24120 [handler.py:handle_request():158] handle_request: defer
+2024-07-30 10:48:36,403 INFO    HandlerThread:24120 [handler.py:handle_request_defer():184] handle defer: 10
+2024-07-30 10:48:36,404 DEBUG   SenderThread:24120 [sender.py:send_request():406] send_request: defer
+2024-07-30 10:48:36,404 INFO    SenderThread:24120 [sender.py:send_request_defer():610] handle sender defer: 10
+2024-07-30 10:48:36,404 INFO    SenderThread:24120 [file_pusher.py:finish():169] shutting down file pusher
+2024-07-30 10:48:36,871 INFO    wandb-upload_0:24120 [upload_job.py:push():130] Uploaded file C:\Jinyoon_Projects\1_ISIC_2024_competition\wandb\run-20240730_104829-i3fj63yl\files\output.log
+2024-07-30 10:48:36,889 DEBUG   HandlerThread:24120 [handler.py:handle_request():158] handle_request: poll_exit
+2024-07-30 10:48:36,889 DEBUG   SenderThread:24120 [sender.py:send_request():406] send_request: poll_exit
+2024-07-30 10:48:36,901 INFO    wandb-upload_1:24120 [upload_job.py:push():130] Uploaded file C:\Jinyoon_Projects\1_ISIC_2024_competition\wandb\run-20240730_104829-i3fj63yl\files\config.yaml
+2024-07-30 10:48:36,952 INFO    wandb-upload_3:24120 [upload_job.py:push():130] Uploaded file C:\Jinyoon_Projects\1_ISIC_2024_competition\wandb\run-20240730_104829-i3fj63yl\files\wandb-summary.json
+2024-07-30 10:48:36,983 INFO    wandb-upload_2:24120 [upload_job.py:push():130] Uploaded file C:\Jinyoon_Projects\1_ISIC_2024_competition\wandb\run-20240730_104829-i3fj63yl\files\requirements.txt
+2024-07-30 10:48:37,185 INFO    Thread-15 (_thread_body):24120 [sender.py:transition_state():614] send defer: 11
+2024-07-30 10:48:37,185 DEBUG   HandlerThread:24120 [handler.py:handle_request():158] handle_request: defer
+2024-07-30 10:48:37,185 INFO    HandlerThread:24120 [handler.py:handle_request_defer():184] handle defer: 11
+2024-07-30 10:48:37,185 DEBUG   SenderThread:24120 [sender.py:send_request():406] send_request: defer
+2024-07-30 10:48:37,185 INFO    SenderThread:24120 [sender.py:send_request_defer():610] handle sender defer: 11
+2024-07-30 10:48:37,185 INFO    SenderThread:24120 [file_pusher.py:join():175] waiting for file pusher
+2024-07-30 10:48:37,186 INFO    SenderThread:24120 [sender.py:transition_state():614] send defer: 12
+2024-07-30 10:48:37,186 DEBUG   HandlerThread:24120 [handler.py:handle_request():158] handle_request: defer
+2024-07-30 10:48:37,186 INFO    HandlerThread:24120 [handler.py:handle_request_defer():184] handle defer: 12
+2024-07-30 10:48:37,186 DEBUG   SenderThread:24120 [sender.py:send_request():406] send_request: defer
+2024-07-30 10:48:37,186 INFO    SenderThread:24120 [sender.py:send_request_defer():610] handle sender defer: 12
+2024-07-30 10:48:37,186 INFO    SenderThread:24120 [file_stream.py:finish():601] file stream finish called
+2024-07-30 10:48:37,400 INFO    SenderThread:24120 [file_stream.py:finish():605] file stream finish is done
+2024-07-30 10:48:37,400 INFO    SenderThread:24120 [sender.py:transition_state():614] send defer: 13
+2024-07-30 10:48:37,400 DEBUG   HandlerThread:24120 [handler.py:handle_request():158] handle_request: defer
+2024-07-30 10:48:37,400 INFO    HandlerThread:24120 [handler.py:handle_request_defer():184] handle defer: 13
+2024-07-30 10:48:37,401 DEBUG   SenderThread:24120 [sender.py:send_request():406] send_request: defer
+2024-07-30 10:48:37,401 INFO    SenderThread:24120 [sender.py:send_request_defer():610] handle sender defer: 13
+2024-07-30 10:48:37,401 INFO    SenderThread:24120 [sender.py:transition_state():614] send defer: 14
+2024-07-30 10:48:37,401 DEBUG   HandlerThread:24120 [handler.py:handle_request():158] handle_request: defer
+2024-07-30 10:48:37,401 DEBUG   SenderThread:24120 [sender.py:send():379] send: final
+2024-07-30 10:48:37,401 INFO    HandlerThread:24120 [handler.py:handle_request_defer():184] handle defer: 14
+2024-07-30 10:48:37,401 DEBUG   SenderThread:24120 [sender.py:send():379] send: footer
+2024-07-30 10:48:37,402 DEBUG   SenderThread:24120 [sender.py:send_request():406] send_request: defer
+2024-07-30 10:48:37,402 INFO    SenderThread:24120 [sender.py:send_request_defer():610] handle sender defer: 14
+2024-07-30 10:48:37,402 DEBUG   HandlerThread:24120 [handler.py:handle_request():158] handle_request: poll_exit
+2024-07-30 10:48:37,402 DEBUG   HandlerThread:24120 [handler.py:handle_request():158] handle_request: server_info
+2024-07-30 10:48:37,402 DEBUG   HandlerThread:24120 [handler.py:handle_request():158] handle_request: poll_exit
+2024-07-30 10:48:37,403 DEBUG   SenderThread:24120 [sender.py:send_request():406] send_request: poll_exit
+2024-07-30 10:48:37,403 DEBUG   HandlerThread:24120 [handler.py:handle_request():158] handle_request: get_summary
+2024-07-30 10:48:37,403 DEBUG   SenderThread:24120 [sender.py:send_request():406] send_request: server_info
+2024-07-30 10:48:37,403 DEBUG   HandlerThread:24120 [handler.py:handle_request():158] handle_request: sampled_history
+2024-07-30 10:48:37,404 DEBUG   HandlerThread:24120 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-30 10:48:37,589 DEBUG   SenderThread:24120 [sender.py:send_request():406] send_request: poll_exit
+2024-07-30 10:48:37,589 INFO    MainThread:24120 [wandb_run.py:_footer_history_summary_info():4016] rendering history
+2024-07-30 10:48:37,589 INFO    MainThread:24120 [wandb_run.py:_footer_history_summary_info():4048] rendering summary
+2024-07-30 10:48:37,589 INFO    MainThread:24120 [wandb_run.py:_footer_sync_info():3975] logging synced files
+2024-07-30 10:48:37,590 DEBUG   HandlerThread:24120 [handler.py:handle_request():158] handle_request: shutdown
+2024-07-30 10:48:37,590 INFO    HandlerThread:24120 [handler.py:finish():882] shutting down handler
+2024-07-30 10:48:38,411 INFO    WriterThread:24120 [datastore.py:close():296] close: C:\Jinyoon_Projects\1_ISIC_2024_competition\wandb\run-20240730_104829-i3fj63yl\run-i3fj63yl.wandb
+2024-07-30 10:48:38,598 INFO    SenderThread:24120 [sender.py:finish():1615] shutting down sender
+2024-07-30 10:48:38,598 INFO    SenderThread:24120 [file_pusher.py:finish():169] shutting down file pusher
+2024-07-30 10:48:38,598 INFO    SenderThread:24120 [file_pusher.py:join():175] waiting for file pusher

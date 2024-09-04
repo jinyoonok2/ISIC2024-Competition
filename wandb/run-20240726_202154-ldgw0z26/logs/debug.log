@@ -1,0 +1,27 @@
+2024-07-26 20:21:54,976 INFO    MainThread:23960 [wandb_setup.py:_flush():76] Current SDK version is 0.17.5
+2024-07-26 20:21:54,977 INFO    MainThread:23960 [wandb_setup.py:_flush():76] Configure stats pid to 23960
+2024-07-26 20:21:54,977 INFO    MainThread:23960 [wandb_setup.py:_flush():76] Loading settings from C:\Users\jinyo\.config\wandb\settings
+2024-07-26 20:21:54,977 INFO    MainThread:23960 [wandb_setup.py:_flush():76] Loading settings from C:\Jinyoon_Projects\1_ISIC_2024_competition\wandb\settings
+2024-07-26 20:21:54,977 INFO    MainThread:23960 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2024-07-26 20:21:54,977 INFO    MainThread:23960 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2024-07-26 20:21:54,977 INFO    MainThread:23960 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'train.py', 'program_abspath': 'C:\\Jinyoon_Projects\\1_ISIC_2024_competition\\train.py', 'program': 'C:\\Jinyoon_Projects\\1_ISIC_2024_competition\\train.py'}
+2024-07-26 20:21:54,977 INFO    MainThread:23960 [wandb_setup.py:_flush():76] Applying login settings: {}
+2024-07-26 20:21:54,978 INFO    MainThread:23960 [wandb_init.py:_log_setup():529] Logging user logs to C:\Jinyoon_Projects\1_ISIC_2024_competition\wandb\run-20240726_202154-ldgw0z26\logs\debug.log
+2024-07-26 20:21:54,978 INFO    MainThread:23960 [wandb_init.py:_log_setup():530] Logging internal logs to C:\Jinyoon_Projects\1_ISIC_2024_competition\wandb\run-20240726_202154-ldgw0z26\logs\debug-internal.log
+2024-07-26 20:21:54,978 INFO    MainThread:23960 [wandb_init.py:init():569] calling init triggers
+2024-07-26 20:21:54,978 INFO    MainThread:23960 [wandb_init.py:init():576] wandb.init called with sweep_config: {}
+config: {'model_name': 'efficientnet_b0', 'pretrained': True, 'num_epochs': 3, 'learning_rate': 0.0001, 'batch_size': 32, 'seed': 42, 'project_name': 'ISIC_2024_Competition', 'artifact_name': 'isic2024-base-model', 'wandb_log': True, 'dataset_mode': '2019'}
+2024-07-26 20:21:54,978 INFO    MainThread:23960 [wandb_init.py:init():619] starting backend
+2024-07-26 20:21:54,978 INFO    MainThread:23960 [wandb_init.py:init():623] setting up manager
+2024-07-26 20:21:54,982 INFO    MainThread:23960 [backend.py:_multiprocessing_setup():105] multiprocessing start_methods=spawn, using: spawn
+2024-07-26 20:21:54,985 INFO    MainThread:23960 [wandb_init.py:init():631] backend started and connected
+2024-07-26 20:21:54,993 INFO    MainThread:23960 [wandb_init.py:init():720] updated telemetry
+2024-07-26 20:21:55,356 INFO    MainThread:23960 [wandb_init.py:init():753] communicating run to backend with 90.0 second timeout
+2024-07-26 20:21:55,947 INFO    MainThread:23960 [wandb_run.py:_on_init():2435] communicating current version
+2024-07-26 20:21:56,020 INFO    MainThread:23960 [wandb_run.py:_on_init():2444] got version response 
+2024-07-26 20:21:56,020 INFO    MainThread:23960 [wandb_init.py:init():804] starting run threads in backend
+2024-07-26 20:21:56,638 INFO    MainThread:23960 [wandb_run.py:_console_start():2413] atexit reg
+2024-07-26 20:21:56,638 INFO    MainThread:23960 [wandb_run.py:_redirect():2255] redirect: wrap_raw
+2024-07-26 20:21:56,638 INFO    MainThread:23960 [wandb_run.py:_redirect():2320] Wrapping output streams.
+2024-07-26 20:21:56,638 INFO    MainThread:23960 [wandb_run.py:_redirect():2345] Redirects installed.
+2024-07-26 20:21:56,644 INFO    MainThread:23960 [wandb_init.py:init():847] run started, returning control to user process
