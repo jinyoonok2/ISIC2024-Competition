@@ -62,16 +62,16 @@ df["3d_position_distance"] = np.sqrt(df["tbp_lv_x"]**2 + df["tbp_lv_y"]**2 + df[
 ```
 
 # Pipeline Structure
-1. Data Preprocessing:
+Data Preprocessing:
 - Load the dataset and perform data cleaning (e.g., handle missing values, drop unnecessary columns).
 - Apply feature engineering on tabular data to create new columns that capture essential lesion characteristics.
-2. Deep Learning Feature Extraction:
+Deep Learning Feature Extraction:
 - Use pretrained models to extract deep features from the images.
 - Save the extracted features to the dataset as additional columns for further processing.
-3. Training with LightGBM and CatBoost:
+Training with LightGBM and CatBoost:
 - Combine the image features with the tabular features.
 - Train LightGBM and CatBoost models using cross-validation.
-4. Post-processing:
+Post-processing:
 - After training, the models are evaluated, and the predictions are saved for submission.
 
 # Running the Code
