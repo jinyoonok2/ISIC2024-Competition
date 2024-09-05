@@ -75,9 +75,48 @@ df["3d_position_distance"] = np.sqrt(df["tbp_lv_x"]**2 + df["tbp_lv_y"]**2 + df[
   - After training, the models are evaluated, and the predictions are saved for submission.
 
 # Running the Code
+### 1. install dependencies
 Ensure you have all the necessary Python libraries installed. You can install the required libraries by running:
 ```
 pip install -r requirements.txt
 ```
+
+### 2. Download the Dataset
 Download the dataset from the provided Google Drive link and place it in the appropriate folder as specified in the configuration file.
+
+### 3. Train Vision Models
+To train the vision models using the timm library, you can either run the Python script or use the Jupyter notebook:
+
+- option 1: Run the Python script vision_train.py. This will train the models as defined in the config dictionary, where you can specify which models (e.g., EfficientNet, SelecSLS) you want to train from the timm library.
+```
+python vision_train.py
+```
+- option 2: Use the Jupyter notebook train_vast_vision.ipynb to train the models interactively online. You can modify the config variable inside the notebook to select the vision models you'd like to train.
+
+After the training is complete, the features extracted by these models will be saved and can be used for further processing.
+
+### 4. Generate Metadata with Extracted Features
+Once the vision models are trained, the extracted features from these models will be added to the metadata. Run evaluation_cv.py to generate the final metadata CSV file. This file will include:
+
+- Feature engineering outputs.
+- Processed columns with missing values handled.
+- Predictions from trained vision models added as new features to the metadata.
+
+```
+python evaluation_cv.py
+```
+
+### 5. Train LightGBM and CatBoost Models
+The newly generated metadata (which includes both image-based and tabular features) is now used to train LightGBM and CatBoost models. These models are trained using cross-validation to ensure robustness. To train the models, run the following script:
+
+```
+python main_cv.py
+```
+This script will:
+- Use cross-validation to train multiple models.
+- Aggregate results across folds to provide an average performance metric.
+
+### 6. Submit Results
+Once all models have been trained, you can generate the final submission file using the notebook isic2024-ensemble-learning-cv.ipynb. This notebook combines the predictions from different models and prepares the results for submission.
+
 
