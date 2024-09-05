@@ -19,7 +19,6 @@ config = {
     'model_paths': {
         'efficientnet_b3.ra2_in1k': "./logs/logs_effb3ra2in1k/epoch_19.pth",
         'selecsls42b.in1k': './logs/logs_selecsls42bin1k/epoch_35.pth',
-        'nextvit_small.bd_in1k_384' : "./logs/logs_nextvit_small/nextvit_small.bd_in1k_384/epoch_9.pth",
     },
     'feature_updated_csv': './datasets/isic-2024-challenge/feature_updated_dataset.csv',
     'feature_engineered_csv': './datasets/isic-2024-challenge/feature_engineered_dataset.csv',
