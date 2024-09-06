@@ -53,6 +53,7 @@ The tabular features include metadata and engineered features such as:
 - Lesion size ratio: Ratio of minor axis to clinical long diameter.
 - Color contrast: Differences in lesion colors using the tbp_lv features.
 - 3D lesion orientation: Calculated based on the tbp_lv_x, tbp_lv_y, and tbp_lv_z values.
+- and so on...
 
 ```
 # Example of feature engineering
