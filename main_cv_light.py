@@ -11,20 +11,15 @@ import numpy as np
 from sklearn.preprocessing import OrdinalEncoder
 
 from utils.lgbm_train_cv import train_lightgbm_model  # Import LightGBM training function
-from utils.catb_train_cv import train_catboost_model  # Import CatBoost training function
 
 # Configuration dictionary
 config = {
     'batch_size': 32,
-    'model_paths': {
-        'efficientnet_b3.ra2_in1k': "./logs/logs_effb3ra2in1k/epoch_19.pth",
-        'selecsls42b.in1k': './logs/logs_selecsls42bin1k/epoch_35.pth',
-        'nextvit_small.bd_in1k_384' : "./logs/logs_nextvit_small/nextvit_small.bd_in1k_384/epoch_9.pth",
-    },
+    'model_path': './logs/logs_effb3ra2in1k/epoch_19.pth',  # Only EfficientNet
     'feature_updated_csv': './datasets/isic-2024-challenge/feature_updated_dataset.csv',
     'feature_engineered_csv': './datasets/isic-2024-challenge/feature_engineered_dataset.csv',
-    'post_processed_csv': './datasets/isic-2024-challenge/post_processed_dataset.csv',  # New entry for post-processed CSV
-    'lightgbm_config': {
+    'post_processed_csv': './datasets/isic-2024-challenge/post_processed_dataset.csv',
+    'lightgbm_config': {  # LightGBM configuration stays the same
         'model_name': 'lightgbm',
         'log_dir': './logs/lightgbm',
         'n_splits': 5,
@@ -49,26 +44,6 @@ config = {
             "device": "gpu"
         },
         'save_best_model': True
-    },
-    'catboost_config': {
-        'model_name': 'catboost',
-        'log_dir': './logs/catboost',
-        'n_splits': 5,
-        'seed': 42,
-        'display_feature_importance': True,
-        'feature_columns': [],
-        'target_column': 'target',
-        'group_column': 'patient_id',
-        'cat_features': [],
-        'cb_params': {
-            'objective': 'Logloss',
-            "iterations": 400,
-            "learning_rate": 0.05,
-            "max_depth": 8,
-            "l2_leaf_reg": 5,
-            "task_type": "GPU",
-            "verbose": 0,
-        },
     }
 }
 
@@ -99,7 +74,7 @@ num_cols = [
 ]
 
 # Non-numeric data found in columns: ['anatom_site_general', 'image_type', 'attribution', 'copyright_license', 'combined_anatomical_site']
-cat_cols = ["sex", "tbp_tile_type", "tbp_lv_location", "tbp_lv_location_simple", "anatom_site_general","combined_anatomical_site", ]
+cat_cols = ["sex", "tbp_tile_type", "tbp_lv_location", "tbp_lv_location_simple", "anatom_site_general"]
 
 # List of columns to drop based on comparison with test-metadata
 columns_to_drop = [
@@ -108,61 +83,6 @@ columns_to_drop = [
     'mel_mitotic_index', 'mel_thick_mm', 'iddx_1', 'iddx_4',
     'image_type', 'attribution', 'copyright_license'
 ]
-
-# Feature Engineering Function
-def feature_engineering(df):
-    df["lesion_size_ratio"] = df["tbp_lv_minorAxisMM"] / df["clin_size_long_diam_mm"]
-    df["lesion_shape_index"] = df["tbp_lv_areaMM2"] / (df["tbp_lv_perimeterMM"] ** 2)
-    df["hue_contrast"] = (df["tbp_lv_H"] - df["tbp_lv_Hext"]).abs()
-    df["luminance_contrast"] = (df["tbp_lv_L"] - df["tbp_lv_Lext"]).abs()
-    df["lesion_color_difference"] = np.sqrt(
-        df["tbp_lv_deltaA"] ** 2 + df["tbp_lv_deltaB"] ** 2 + df["tbp_lv_deltaL"] ** 2)
-    df["border_complexity"] = df["tbp_lv_norm_border"] + df["tbp_lv_symm_2axis"]
-    df["color_uniformity"] = df["tbp_lv_color_std_mean"] / df["tbp_lv_radial_color_std_max"]
-    df["3d_position_distance"] = np.sqrt(df["tbp_lv_x"] ** 2 + df["tbp_lv_y"] ** 2 + df["tbp_lv_z"] ** 2)
-    df["perimeter_to_area_ratio"] = df["tbp_lv_perimeterMM"] / df["tbp_lv_areaMM2"]
-    df["area_to_perimeter_ratio"] = df["tbp_lv_areaMM2"] / df["tbp_lv_perimeterMM"]
-    df["lesion_visibility_score"] = df["tbp_lv_deltaLBnorm"] + df["tbp_lv_norm_color"]
-    df["combined_anatomical_site"] = df["anatom_site_general"] + "_" + df["tbp_lv_location"]
-    df["symmetry_border_consistency"] = df["tbp_lv_symm_2axis"] * df["tbp_lv_norm_border"]
-    df["consistency_symmetry_border"] = df["tbp_lv_symm_2axis"] * df["tbp_lv_norm_border"] / (
-            df["tbp_lv_symm_2axis"] + df["tbp_lv_norm_border"])
-    df["color_consistency"] = df["tbp_lv_stdL"] / df["tbp_lv_Lext"]
-    df["consistency_color"] = df["tbp_lv_stdL"] * df["tbp_lv_Lext"] / (df["tbp_lv_stdL"] + df["tbp_lv_Lext"])
-    df["size_age_interaction"] = df["clin_size_long_diam_mm"] * df["age_approx"]
-    df["hue_color_std_interaction"] = df["tbp_lv_H"] * df["tbp_lv_color_std_mean"]
-    df["lesion_severity_index"] = (df["tbp_lv_norm_border"] + df["tbp_lv_norm_color"] + df["tbp_lv_eccentricity"]) / 3
-    df["shape_complexity_index"] = df["border_complexity"] + df["lesion_shape_index"]
-    df["color_contrast_index"] = df["tbp_lv_deltaA"] + df["tbp_lv_deltaB"] + df["tbp_lv_deltaL"] + df[
-        "tbp_lv_deltaLBnorm"]
-    df["log_lesion_area"] = np.log(df["tbp_lv_areaMM2"] + 1)
-    df["normalized_lesion_size"] = df["clin_size_long_diam_mm"] / df["age_approx"]
-    df["mean_hue_difference"] = (df["tbp_lv_H"] + df["tbp_lv_Hext"]) / 2
-    df["std_dev_contrast"] = np.sqrt(
-        (df["tbp_lv_deltaA"] ** 2 + df["tbp_lv_deltaB"] ** 2 + df["tbp_lv_deltaL"] ** 2) / 3)
-    df["color_shape_composite_index"] = (df["tbp_lv_color_std_mean"] + df["tbp_lv_area_perim_ratio"] + df[
-        "tbp_lv_symm_2axis"]) / 3
-    df["3d_lesion_orientation"] = np.arctan2(df["tbp_lv_y"], df["tbp_lv_x"])
-    df["overall_color_difference"] = (df["tbp_lv_deltaA"] + df["tbp_lv_deltaB"] + df["tbp_lv_deltaL"]) / 3
-    df["symmetry_perimeter_interaction"] = df["tbp_lv_symm_2axis"] * df["tbp_lv_perimeterMM"]
-    df["comprehensive_lesion_index"] = (df["tbp_lv_area_perim_ratio"] + df["tbp_lv_eccentricity"] + df[
-        "tbp_lv_norm_color"] + df["tbp_lv_symm_2axis"]) / 4
-    df["color_variance_ratio"] = df["tbp_lv_color_std_mean"] / df["tbp_lv_stdLExt"]
-    df["border_color_interaction"] = df["tbp_lv_norm_border"] * df["tbp_lv_norm_color"]
-    df["size_color_contrast_ratio"] = df["clin_size_long_diam_mm"] / df["tbp_lv_deltaLBnorm"]
-    df["age_normalized_nevi_confidence"] = df["tbp_lv_nevi_confidence"] / df["age_approx"]
-    df["color_asymmetry_index"] = df["tbp_lv_radial_color_std_max"] * df["tbp_lv_symm_2axis"]
-    df["3d_volume_approximation"] = df["tbp_lv_areaMM2"] * np.sqrt(
-        df["tbp_lv_x"] ** 2 + df["tbp_lv_y"] ** 2 + df["tbp_lv_z"] ** 2)
-    df["color_range"] = (df["tbp_lv_L"] - df["tbp_lv_Lext"]).abs() + (df["tbp_lv_A"] - df["tbp_lv_Aext"]).abs() + (
-            df["tbp_lv_B"] - df["tbp_lv_Bext"]).abs()
-    df["shape_color_consistency"] = df["tbp_lv_eccentricity"] * df["tbp_lv_color_std_mean"]
-    df["border_length_ratio"] = df["tbp_lv_perimeterMM"] / (2 * np.pi * np.sqrt(df["tbp_lv_areaMM2"] / np.pi))
-    df["age_size_symmetry_index"] = df["age_approx"] * df["clin_size_long_diam_mm"] * df["tbp_lv_symm_2axis"]
-    df["index_age_size_symmetry"] = df["age_approx"] * df["tbp_lv_areaMM2"] * df["tbp_lv_symm_2axis"]
-
-    return df
-
 
 # Custom Dataset Class without storing image paths in DataFrame
 class CustomDataset(Dataset):
@@ -253,9 +173,9 @@ def encode_categorical(df, cat_cols, category_encoder=None):
 
 
 def main():
-    if os.path.exists(config['feature_engineered_csv']):
-        print(f"Feature engineered CSV already exists at: {config['feature_engineered_csv']}")
-        df = pd.read_csv(config['feature_engineered_csv'])
+    if os.path.exists(config['feature_updated_csv']):
+        print(f"Feature updated CSV already exists at: {config['feature_updated_csv']}")
+        df = pd.read_csv(config['feature_updated_csv'])
     else:
         df = pd.read_csv('./datasets/isic-2024-challenge/train-metadata.csv')
 
@@ -265,26 +185,14 @@ def main():
         # Step 1: Fill missing values with median in numeric columns
         df = fill_na_with_median(df, num_cols)
 
-        # Step 2: Apply feature engineering
-        df = feature_engineering(df)
-
-        # Step 3: Save the feature-engineered DataFrame
-        df.to_csv(config['feature_engineered_csv'], index=False)
-        print(f"Saved DataFrame with feature engineering to {config['feature_engineered_csv']}")
-
-    if os.path.exists(config['feature_updated_csv']):
-        print(f"Feature updated CSV already exists at: {config['feature_updated_csv']}")
-        df = pd.read_csv(config['feature_updated_csv'])
-    else:
+        # Generate features using EfficientNet
         image_paths = './datasets/isic-2024-challenge/train-image/image/' + df['isic_id'] + '.jpg'
+        df = generate_features('efficientnet_b3.ra2_in1k', config['model_path'], image_paths.tolist(), df, config)
 
-        for model_name, model_path in config['model_paths'].items():
-            df = generate_features(model_name, model_path, image_paths.tolist(), df, config)
-
-        # Step 4: Encode categorical columns
+        # Encode categorical columns
         df, category_encoder = encode_categorical(df, cat_cols)
 
-        # Step 5: Save the updated DataFrame with generated features
+        # Save the updated DataFrame with generated features
         df.to_csv(config['feature_updated_csv'], index=False)
         print(f"Saved DataFrame with model-generated features to {config['feature_updated_csv']}")
 
@@ -293,11 +201,11 @@ def main():
         print(f"Post-processed CSV already exists at: {config['post_processed_csv']}")
         df = pd.read_csv(config['post_processed_csv'])
     else:
-        # Step 6: Post-process empty cells by filling them with -1
+        # Post-process empty cells by filling them with -1
         print("Post-processing the DataFrame by filling missing values with -1...")
         df.fillna(-1, inplace=True)
 
-        # Step 7: Save the post-engineered DataFrame
+        # Save the post-engineered DataFrame
         df.to_csv(config['post_processed_csv'], index=False)
         print(f"Saved post-engineered DataFrame to {config['post_processed_csv']}")
 
@@ -310,7 +218,6 @@ def main():
         print(f"Feature columns identified: {feature_columns}")
 
     config['lightgbm_config']['feature_columns'] = feature_columns
-    config['catboost_config']['feature_columns'] = feature_columns
 
     print(f"Final feature columns: {config['lightgbm_config']['feature_columns']}")
 
@@ -323,10 +230,6 @@ def main():
     print("Starting LightGBM training...")
     lgbm_model_path = train_lightgbm_model(df, config['lightgbm_config'])
     print(f"LightGBM training completed. Models saved at: {lgbm_model_path}")
-
-    print("Starting CatBoost training...")
-    catboost_model_path = train_catboost_model(df, config['catboost_config'])
-    print(f"CatBoost training completed. Models saved at: {catboost_model_path}")
 
 
 if __name__ == "__main__":
